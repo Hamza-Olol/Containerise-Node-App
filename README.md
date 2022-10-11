@@ -7,7 +7,8 @@ This demo app shows a simple user profile app set up using
 
 All components are docker-based and following the [docker tutorial](https://www.youtube.com/watch?v=3c-iBn73dDE&t=3371s).
 
-## Option 1: Docker build through the cli @@ This is a purple colored line @@
+@@ This is a purple colored line @@
+## Option 1: Docker build through the cli 
 
 
 pull mongo and mongo-express images from Dockerhub:
