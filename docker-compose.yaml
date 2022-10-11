@@ -26,4 +26,4 @@ services:
       - ME_CONFIG_MONGODB_SERVER=mongodb
 volumes: # must be defined in order to store persistant data when container is stopped.
   mongo-data:
-    driver: local # store locally on the container
+    driver: local # store on a local file system
