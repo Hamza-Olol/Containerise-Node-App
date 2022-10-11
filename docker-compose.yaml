@@ -1,5 +1,9 @@
 version: '3'
 services:
+  my-app:
+    image: my-app:1.0
+    ports:
+      - 3000:3000
   mongodb: # Name of the container
     image: mongo # Name of the image to be pulled from Dockerhub public repo
     ports:
@@ -8,6 +12,8 @@ services:
       # Environment variables for mongodb
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
+    volumes:
+      - mongo-data:/data/db # location in the container where the volume is stored, each db type has a different location, example mysql is `var/lib/msql` and postgres is `var/lib/postgresql/data`
   mongo-express: # Name of the container
     image: mongo-express # Name of the image to be pulled from Dockerhub public repo
     restart: always # mongo-express needs mongodb up and running first so it needs to keep restarting until it connects.
@@ -18,3 +24,6 @@ services:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
       - ME_CONFIG_MONGODB_ADMINPASSWORD=password
       - ME_CONFIG_MONGODB_SERVER=mongodb
+volumes: # must be defined in order to store persistant data when container is stopped.
+  mongo-data:
+    driver: local # store locally on the container

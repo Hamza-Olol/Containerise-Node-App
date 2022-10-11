@@ -42,4 +42,8 @@ now search http://localhost:8080 (for mongo-express) or http://localhost:3000 (f
 
 ## Option 3: Dockerfile
 
-You can build your own Docker image from a Dockerfile.
+You can build your own Docker image from a Dockerfile as per my-app:1.0
+
+To build the image from the Dockerfile, run `docker build -t <image name>:<image tag> .` in the cli. `-t` to then fill in your desired image name and image tag and then state the location of your Dockerfile, `.` since the Dockerfile is in the same working directory.
+
+Once the image is built, you can choose to do option 1 or option 2 to create a run time environment of that image (a container).
