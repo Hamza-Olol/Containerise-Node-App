@@ -1,4 +1,4 @@
-###Docker-demo###
+#Docker-demo
 
 This demo app shows a simple user profile app set up using 
 - index.html with pure js and css styles
@@ -7,9 +7,8 @@ This demo app shows a simple user profile app set up using
 
 All components are docker-based and following the [docker tutorial](https://www.youtube.com/watch?v=3c-iBn73dDE&t=3371s).
 
-##Option 1: Docker build through the cli##
+##Option 1: Docker build through the cli
 
-#step 1#
 
 pull mongo and mongo-express images from Dockerhub:
 
@@ -35,12 +34,12 @@ for more information on how to finish the app if there are missing modules or yo
 
 now search http://localhost:8080 (for mongo-express) or http://localhost:3000 (for server.js) on your browser to access the UI when the containers are running.
 
-##Option 2: Docker-compose##
+##Option 2: Docker-compose
 
 build docker-compose and build the containers + network using `docker-compose up -d`, to destroy it use `docker-compose down`. An example build can be found in docker-compose.yaml.
 
 now search http://localhost:8080 (for mongo-express) or http://localhost:3000 (for server.js) on your browser to access the UI when the containers are running. If server.js is not running then use the previously mentioned method to set this up.
 
-##Option 3: Dockerfile##
+##Option 3: Dockerfile
 
 You can build your own Docker image from a Dockerfile.
