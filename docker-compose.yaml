@@ -4,26 +4,38 @@ services:
     image: my-app:1.0
     ports:
       - 3000:3000
-  mongodb: # Name of the container
-    image: mongo # Name of the image to be pulled from Dockerhub public repo
+  # Name of the container
+
+  mongodb:
+    # Name of the image to be pulled from Dockerhub public repo
+    image: mongo
+    # host port:container port
     ports:
-      - 27017:27017 # host port:container port
+      - 27017:27017
+    # Environment variables for mongodb
     environment:
-      # Environment variables for mongodb
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=password
+    # location in the container where the volume is stored, each db type has a different location, example mysql is `var/lib/msql` and postgres is `var/lib/postgresql/data`
     volumes:
-      - mongo-data:/data/db # location in the container where the volume is stored, each db type has a different location, example mysql is `var/lib/msql` and postgres is `var/lib/postgresql/data`
-  mongo-express: # Name of the container
-    image: mongo-express # Name of the image to be pulled from Dockerhub public repo
-    restart: always # mongo-express needs mongodb up and running first so it needs to keep restarting until it connects.
+      - mongo-data:/data/db
+
+  mongo-express:
+    # Name of the image to be pulled from Dockerhub public repo
+    image: mongo-express
+    # mongo-express needs mongodb up and running first so it needs to keep restarting until it connects.
+    restart: always
+    # host port:container port
     ports:
-      - 8080:8081 # host port:container port
+      - 8080:8081
+    # Environment variables for mongo-express
     environment:
-      # Environment variables for mongo-express
       - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
       - ME_CONFIG_MONGODB_ADMINPASSWORD=password
       - ME_CONFIG_MONGODB_SERVER=mongodb
-volumes: # must be defined in order to store persistant data when container is stopped.
+
+# must be defined in order to store persistant data when container is stopped.
+volumes:
   mongo-data:
-    driver: local # store on a local file system
+    # store on a local file system
+    driver: local 
