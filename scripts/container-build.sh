@@ -2,7 +2,6 @@
 
 docker build -t nodeapp:1.0 .
 
-# docker network create "my-app"
 docker network create "mongo-network"
 
 docker run -it -d -p 3000:3000 --network=mongo-network --name nodeapp nodeapp:1.0 
